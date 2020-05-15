@@ -2,8 +2,8 @@ package com.spring.sfgdi;
 
 import com.spring.sfgdi.controllers.FirstController;
 import com.spring.sfgdi.controllers.GreetingController;
-import com.spring.sfgdi.controllers.HelloController;
 import com.spring.sfgdi.controllers.I18NController;
+import com.spring.sfgdi.controllers.PetController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -15,6 +15,11 @@ public class SfgDiApplication {
 
         ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
 
+        PetController petController = (PetController) ctx.getBean("petController");
+        System.out.println(petController.getPet());
+        System.out.println("---------------------------------------------------------");
+
+
         FirstController firstController = (FirstController) ctx.getBean("firstController");
         System.out.println("---------------------------Primary Greeting");
         System.out.println(firstController.sayHello());
@@ -25,8 +30,6 @@ public class SfgDiApplication {
 
         System.out.println("---------------------------Service");
 
-        HelloController helloController = (HelloController) ctx.getBean("helloController");
-        System.out.println(helloController.sayHi());
 
         System.out.println("---------------------------Greeting");
         GreetingController greetingController = (GreetingController) ctx.getBean("greetingController");
